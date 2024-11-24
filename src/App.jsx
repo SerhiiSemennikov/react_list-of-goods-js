@@ -22,7 +22,6 @@ export const goodsFromServer = [
 
 function getPreparedGoods(goods, sortField, query) {
   const preparedGoods = [...goods];
-  const SORT_FIELD_REVERSE = query;
 
   if (sortField) {
     preparedGoods.sort((good1, good2) => {
@@ -39,7 +38,7 @@ function getPreparedGoods(goods, sortField, query) {
     });
   }
 
-  if (SORT_FIELD_REVERSE) {
+  if (query) {
     preparedGoods.reverse();
   }
 
