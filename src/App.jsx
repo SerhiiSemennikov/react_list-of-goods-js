@@ -20,7 +20,7 @@ export const goodsFromServer = [
   'Garlic',
 ];
 
-function getPreparedGoods(goods, sortField, query) {
+function getPreparedGoods(goods, sortField, reversed) {
   const preparedGoods = [...goods];
 
   if (sortField) {
@@ -38,7 +38,7 @@ function getPreparedGoods(goods, sortField, query) {
     });
   }
 
-  if (query) {
+  if (reversed) {
     preparedGoods.reverse();
   }
 
@@ -62,9 +62,8 @@ export const App = () => {
           <button
             type="button"
             onClick={() => setSortField(SORT_FIELD_ALPHABETICALLY)}
-            className={cn('button', 'is-info', {
-              'is-light': sortField !== SORT_FIELD_ALPHABETICALLY,
-            })}
+            className={`button is-info ${sortField === SORT_FIELD_ALPHABETICALLY ? '' : 'is-light'}`}
+
           >
             Sort alphabetically
           </button>
